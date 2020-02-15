@@ -96,7 +96,4 @@ public class ArrayStack {
         count = 0;
     }
 
-    //销毁栈
-    public void destroy() {
-    }
 }
