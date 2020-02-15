@@ -20,7 +20,6 @@ public class ArrayStack {
     private int count;
 
     //初始化栈
-    //?????count的初始化为什么一定要放在构造函数呢
     public ArrayStack(int n) {
         this.items = new String[n];
         this.n = n;
@@ -69,10 +68,10 @@ public class ArrayStack {
     }
 
     //返回栈顶元素
-    public String peek() {
+    public String peek() throws Exception {
         //判断栈是否为空,否则数组越界
         if (isEmpty()) {
-            return null;
+            throw new Exception("栈已空");
         }
         return items[count - 1];
     }
@@ -84,5 +83,20 @@ public class ArrayStack {
             result = result.concat(items[count - i - 1]);
         }
         return result;
+    }
+
+    //清空栈
+    public void clear() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("栈已空");
+        }
+        for (int i = 0; i < count; i++) {
+            items[count] = null;
+        }
+        count = 0;
+    }
+
+    //销毁栈
+    public void destroy() {
     }
 }
