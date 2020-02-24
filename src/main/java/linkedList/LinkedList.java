@@ -49,9 +49,15 @@ public class LinkedList<E> {
         //判断链表是否为空
         if (head == null) {
             head = new Node<>(e, null);
+            size++;
+            //没有return会继续走下去，逻辑异常
+            return;
         }
-        //获取要插入结点的前驱结点
+        //获取要插入结点的前驱结点,从头结点开始遍历
         Node<E> pre = head;
+        while (pre.next != null) {
+            pre = pre.next;
+        }
         pre.next = new Node<>(e, null);
         size++;
     }
