@@ -16,13 +16,9 @@ public class LinkedListMain {
         linkedList.add("c");
         linkedList.add("d");
         System.out.println(linkedList.size());
-        System.out.println(linkedList.get(0));
-        System.out.println(linkedList.get(1));
-        System.out.println(linkedList.get(2));
-        System.out.println(linkedList.get(3));
         System.out.println(linkedList.traversal());
-        System.out.println(linkedList.remove());
-        System.out.println(linkedList.traversal());
+        linkedList.reverse();
+
     }
 
 }

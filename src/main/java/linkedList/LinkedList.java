@@ -9,42 +9,62 @@ package linkedList;
  */
 public class LinkedList<E> {
 
-    //链表中元素个数
+    /**
+     * 链表中元素个数
+     */
     private int size;
 
-    //头结点
+    /**
+     * 头结点
+     */
     private Node<E> head;
 
-    //初始化链表
-    public LinkedList() {
+    LinkedList() {
         this.size = 0;
         this.head = null;
     }
 
-    //内部结点类
+    /**
+     * 结点 类
+     *
+     * @param <E>
+     */
     private static class Node<E> {
         E item;
         Node<E> next;
 
-        public Node(E item, Node<E> next) {
+        Node(E item, Node<E> next) {
             this.item = item;
             this.next = next;
         }
     }
 
-    //返回链表中的元素个数
-    public int size() {
+    /**
+     * 返回链表中的元素个数
+     *
+     * @return int
+     */
+    int size() {
         return size;
     }
 
-    //添加元素
-    public boolean add(E e) {
+    /**
+     * 添加元素
+     *
+     * @param e 元素
+     * @return boolean
+     */
+    boolean add(E e) {
         linkLast(e);
         return true;
     }
 
-    //默认在链表尾部插入元素
-    void linkLast(E e) {
+    /**
+     * 默认在链表尾部插入元素
+     *
+     * @param e 元素
+     */
+    private void linkLast(E e) {
         //添加到链表的尾部
         //判断链表是否为空
         if (head == null) {
@@ -62,13 +82,21 @@ public class LinkedList<E> {
         size++;
     }
 
-    //删除元素
-    public E remove() {
+    /**
+     * 删除元素
+     *
+     * @return 被删除的元素
+     */
+    E remove() {
         return removeFirst();
     }
 
-    //默认删除链表头结点
-    E removeFirst() {
+    /**
+     * 默认删除链表头结点
+     *
+     * @return 被删除的元素
+     */
+    private E removeFirst() {
         //判断链表是否为空
         if (head == null) {
             return null;
@@ -83,8 +111,14 @@ public class LinkedList<E> {
         return element;
     }
 
-    //查找元素
-    public E get(int index) throws Exception {
+    /**
+     * 查找元素
+     *
+     * @param index 索引
+     * @return 元素
+     * @throws Exception 异常
+     */
+    E get(int index) throws Exception {
         //是否越界
         if (index < 0 || index > size) {
             throw new Exception("下标越界");
@@ -92,19 +126,45 @@ public class LinkedList<E> {
         Node<E> back = head;
         for (int i = 0; i < index; i++) {
             back = back.next;
-//            System.out.println(back.item);
         }
         return back.item;
     }
 
     //修改元素
 
-    //遍历
-    public String traversal() throws Exception {
+    /**
+     * 遍历
+     *
+     * @return String
+     * @throws Exception 异常
+     */
+    String traversal() throws Exception {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < size; i++) {
             result.append(get(i));
         }
         return result.toString();
+    }
+
+    /**
+     * 链表的反转
+     */
+    public Node reverse() {
+        //链表为空或只有一个元素
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node pre = null;
+        Node cur = head;
+        Node tmp;
+        while (cur != null) {
+            tmp = cur.next;
+            cur.next = pre;
+
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
     }
 }
