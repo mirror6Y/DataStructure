@@ -18,8 +18,8 @@ public class BaseBinarySearch {
 
         while (low <= high) {
             //可能会溢出
-            int mid = (low + high) / 2;
-//            int mid = low + (high - low) / 2;
+//            int mid = (low + high) / 2;
+            int mid = low + (high - low) / 2;
             if (a[mid] == value) {
                 return mid;
             } else if (a[mid] > value) {
